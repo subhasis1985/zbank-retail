@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.zbank.retail.exception.EmployingOrganizationNotFoundException;
 
 @ControllerAdvice
-class EmployeeNotFoundAdvice {
+public class EmployingOrganizationNotFoundAdvice {
 
   @ResponseBody
   @ExceptionHandler(EmployingOrganizationNotFoundException.class)

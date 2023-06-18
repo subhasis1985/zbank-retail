@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zbank.retail.entity.EmployingOrganization;
-import com.zbank.retail.dao.EmployeeRepository;
+import com.zbank.retail.dao.EmployingOrganizationRepository;
 import com.zbank.retail.exception.EmployingOrganizationNotFoundException;
 
 @RestController
-public class EmployeeController {
+public class EmployingOrganizationController {
 
-	private final EmployeeRepository repository;
+	private final EmployingOrganizationRepository repository;
 
-	EmployeeController(EmployeeRepository repository) {
+	EmployingOrganizationController(EmployingOrganizationRepository repository) {
 		this.repository = repository;
 	}
 
