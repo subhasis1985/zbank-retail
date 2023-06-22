@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.zbank.retail.entity.EmployingOrganization;
 import com.zbank.retail.dao.EmployingOrganizationRepository;
+import com.zbank.retail.exception.EmployingOrganizationBadRequestFormatException;
 import com.zbank.retail.exception.EmployingOrganizationNotFoundException;
 
 @RestController
@@ -45,8 +46,11 @@ public class EmployingOrganizationController {
 	}
 
 	@PutMapping("/emporgs/{orgCode}")
-	EmployingOrganization replaceEmployingOrg(@RequestBody EmployingOrganization newEmpOrg, @PathVariable String orgCode) {
-
+	EmployingOrganization replaceEmployingOrg(@RequestBody EmployingOrganization newEmpOrg,
+			@PathVariable String orgCode) {
+		if (!orgCode.equals(newEmpOrg.getOrgCode())) {
+			throw new EmployingOrganizationBadRequestFormatException(orgCode, newEmpOrg.getOrgCode());
+		}
 		return repository.findById(orgCode).map(empOrg -> {
 			empOrg.setOrgName(newEmpOrg.getOrgName());
 			empOrg.setOrgNote(newEmpOrg.getOrgName());
