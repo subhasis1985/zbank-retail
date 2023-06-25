@@ -2,6 +2,8 @@ package com.zbank.retail.ws.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import com.zbank.retail.exception.EmployingOrganizationNotFoundException;
 
 @RestController
 public class EmployingOrganizationController {
+	private static final Logger _logger = LoggerFactory.getLogger(EmployingOrganizationController.class);
 
 	private final EmployingOrganizationRepository repository;
 
@@ -41,7 +44,7 @@ public class EmployingOrganizationController {
 
 	@GetMapping("/emporgs/{orgCode}")
 	EmployingOrganization one(@PathVariable String orgCode) {
-
+		_logger.info("Record for "+orgCode);
 		return repository.findById(orgCode).orElseThrow(() -> new EmployingOrganizationNotFoundException(orgCode));
 	}
 
