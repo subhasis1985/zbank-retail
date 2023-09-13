@@ -11,7 +11,7 @@
 	<groupId>com.zbank</groupId>
 	<artifactId>retail</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>retail</name>
+	<name>zbank-retail</name>
 	<description>zbank retail</description>
 	<properties>
 		<java.version>17</java.version>
